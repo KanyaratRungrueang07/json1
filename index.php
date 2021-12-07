@@ -23,7 +23,7 @@
             $("#main").hide();
         }
         function loadPost(){
-                var ur ="https://jsonplaceholder.typicode.com/posts";
+                var url ="https://jsonplaceholder.typicode.com/posts";
                 $.getJSON(url)
                 .done((data)=>{
                     $.each(data, (k , item)=>{
