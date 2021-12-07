@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+
 </head>
 <body>
 <button id="btnBack"> back </button>
@@ -20,17 +23,25 @@
         </tbody>
     </table>
 </div>
+
 <div id="detail">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th> <th>Title</th><th> userId</th>
+            </tr>
+        </thead>
+        <tbody id="tblDetails">
+        </tbody>
+    </table> 
     
-      <br>  "postId": 1,</br>
-      <br>  "id": 1,</br>
-      <br>  "name": "id labore ex et quam laborum",</br>
-      <br> "email": "Eliseo@gardner.biz",</br>
-      <br> "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"</br>
-      
 </div>
+
     
+
+
 </body>
+
 <script>
     function showDetails(id){
         $("#main").hide();
@@ -39,8 +50,18 @@
         $.getJSON(url)
             .done((data)=>{
                 console.log(data);
+                var line = "<tr id='rowdetail'";
+                        line += "<td>"+ data.id + "</td>";
+                        line += "<td><b>"+ data.title + "</b><br/>";
+                        line += data.body + "</td>";
+                        line += "<td>" + data.userId + "</td>"
+
+                        line += "</tr>";
+                    $("#tblDetails").append(line);
+
             })
             .fail((xhr, status, error)=>{
+
             })
     }
     function loadPosts(){
@@ -57,19 +78,35 @@
                         line += "<td><b>"+ item.title + "</b><br/>";
                         line += item.body + "</td>";
                         line += "<td> <button onClick='showDetails("+ item.id +");' > link </button> </td>";
+
                         line += "</tr>";
                     $("#tblPosts").append(line);
                 });
                 $("#main").show();
             })
             .fail((xhr, status, error)=>{
+
             })
     }
+  
     $(()=>{
+
         loadPosts();
         $("#btnBack").click(()=>{
             $("#main").show();
+            $("#detail").hide();
+            $("#rowdetail").remove();
+            
+       
         });
+    
     })
+
 </script>
+
+
+
+
+
+
 </html>
