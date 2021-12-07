@@ -19,6 +19,9 @@
         </tbody>
     </table>
     <script>
+        function ShowDetail(){
+            $("#main").hide();
+        }
         function loadPost(){
                 var ur ="https://jsonplaceholder.typicode.com/posts";
                 $.getJSON(url)
@@ -26,9 +29,10 @@
                     $.each(data, (k , item)=>{
                         console.log(item);
                         var line = "<tr";
-                            line += "<td>" + k+"/td";
-                             line += "<td>" + k+"/td";
-                             line += "<td>" + k+"/td";
+                            line += "<td>" + item.id +"</td>";
+                             line += "<td><b>" + item.title + "</b></br>";
+                             line += "<td>" + item.body +"</td>";
+                             line+= "<td> <button onClick='ShowDetail();'> link</button>";
                             
                             line +="</tr>";
                             $("#tblPosts").append(line);
