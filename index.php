@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>63100481</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 </head>
 <body>
     <div class="col-1"></div>
@@ -35,10 +38,7 @@
             </div>
 
         </div>
-    
-        
-    </div>
-    <div class="col-9">
+   <div class="col-9">
     <button id="btnBack"> back </button>
     <div id="main">
         <table class="table table-success table-striped">
@@ -71,7 +71,7 @@
 <div class="detail">
     <div class="row" style="margin-left: 50%;">
         <div class="col-12 ">
-            <p>63116503 ชเนตตี เหล็กหลี</p>
+            <p>63100481 กัญญารัตน์ รุ่งเรือง</p>
         </div>
     </div>
 </div>
@@ -82,7 +82,9 @@
         $("#main").hide();
         $("#detail").show();
 
+      
         var url = "https://jsonplaceholder.typicode.com/posts/" + id
+
         $.getJSON(url)
             .done((data) => {
                 console.log(data);
@@ -95,15 +97,19 @@
                 $("#tblDetails").append(line);
             })
             .fail((xhr, err, status) => {
+
             })
+
+
     }
+
     function LoadPosts() {
         var url = "https://jsonplaceholder.typicode.com/posts"
         var i = 0;
         $.getJSON(url)
             .done((data) => {
                 $.each(data, (k, item) => {
-
+                   
                     i++;
                     var line = "<tr>";
                     line += "<td>" + item.id + "</td>"
@@ -119,8 +125,10 @@
                 $("#main").show();
             })
             .fail((xhr, err, status) => {
+
             })
     }
+
     $(() => {
         LoadPosts();
         $("#detail").hide();
@@ -131,16 +139,11 @@
         });
     })
 </script>
-    <footer>
-        <b>Kanyarat Rungrueang</b>
-        <b>63100481</b>
-    </footer>
 
 
 
 
 
-
-
+</html>
 </body>
 </html>
